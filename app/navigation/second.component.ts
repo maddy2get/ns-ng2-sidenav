@@ -7,21 +7,20 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-telerik-ui-
 
 @Component({
     moduleId: module.id,
-    selector: "tk-sidedrawer-getting-started",
-    templateUrl: 'app.component.html',
-    styleUrls: ['app.component.css']
+    selector: "tk-first",
+    templateUrl: "second.component.html",
+    styleUrls: ["second.component.css"]
 })
-@Injectable()
-export class SideDrawerGettingStartedComponent extends Observable implements OnInit {
-    constructor(private page: Page, private _changeDetectionRef: ChangeDetectorRef) {
+export class SecondComponent extends Observable implements OnInit {
+     constructor(private page: Page, private _changeDetectionRef: ChangeDetectorRef) {
         super();
     }
 
-    //@ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+    @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: SideDrawerType;
 
     ngAfterViewInit() {
-        //this.drawer = this.drawerComponent.sideDrawer;
+        this.drawer = this.drawerComponent.sideDrawer;
         this._changeDetectionRef.detectChanges();
     }
 
@@ -33,5 +32,4 @@ export class SideDrawerGettingStartedComponent extends Observable implements OnI
     public openDrawer() {
         this.drawer.showDrawer();
     }
-
 }

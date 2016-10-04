@@ -2,13 +2,44 @@
 import { platformNativeScriptDynamic, NativeScriptModule } from "nativescript-angular/platform";
 import { NgModule } from "@angular/core";
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui-pro/sidedrawer/angular";
-import { AppComponent } from "./app.component";
+import { SideDrawerGettingStartedComponent } from "./app.component";
+import { FirstComponent, APP_ROUTES } from "./navigation/first.component";
+import { SecondComponent } from "./navigation/second.component";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 @NgModule({
-    declarations: [AppComponent, SIDEDRAWER_DIRECTIVES],
-    bootstrap: [AppComponent],
-    imports: [NativeScriptModule],
+    bootstrap: [FirstComponent],
+    declarations: [
+        FirstComponent,
+        SecondComponent,
+        SIDEDRAWER_DIRECTIVES],
+    imports: [
+        NativeScriptModule,
+        NativeScriptFormsModule,
+        NativeScriptRouterModule,
+        NativeScriptRouterModule.forRoot(APP_ROUTES)
+    ],
+    exports: [
+        NativeScriptModule,
+        NativeScriptRouterModule
+    ],
 })
-class AppComponentModule {}
+class AppComponentModule { }
 
 platformNativeScriptDynamic().bootstrapModule(AppComponentModule);
+
+
+// @NgModule({
+//     declarations: [
+//         SideDrawerGettingStartedComponent,
+//         SIDEDRAWER_DIRECTIVES],
+//     bootstrap: [SideDrawerGettingStartedComponent],
+//     imports: [
+//         NativeScriptModule,
+//         NativeScriptFormsModule,
+//         NativeScriptRouterModule,],
+// })
+// class AppComponentModule { }
+
+// platformNativeScriptDynamic().bootstrapModule(AppComponentModule);
